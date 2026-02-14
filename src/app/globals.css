@@ -1,0 +1,166 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 37 100% 94%; /* #FFF3E0 - Light Cream */
+    --foreground: 20 10% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 20 10% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 20 10% 10%;
+    --primary: 14 100% 63%; /* #FF7043 - Warm Orange */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 44 100% 50%; /* #FFB300 - Muted Gold */
+    --secondary-foreground: 20 10% 10%;
+    --muted: 37 30% 85%;
+    --muted-foreground: 20 10% 40%;
+    --accent: 44 100% 50%;
+    --accent-foreground: 20 10% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 37 20% 85%;
+    --input: 37 20% 85%;
+    --ring: 14 100% 63%;
+    --radius: 1rem;
+    --sidebar-background: 37 100% 96%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 14 100% 63%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 44 100% 90%;
+    --sidebar-accent-foreground: 14 100% 40%;
+    --sidebar-border: 37 20% 85%;
+    --sidebar-ring: 14 100% 63%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+.font-headline {
+  font-family: 'PT Sans', sans-serif;
+  font-weight: 700;
+}
+
+.font-body {
+  font-family: 'PT Sans', sans-serif;
+}
+
+/* --- Animated Mesh Gradient --- */
+@keyframes mesh-gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-mesh {
+  background: linear-gradient(-45deg, #FFF3E0, #FFE0B2, #FFCC80, #FFB74D);
+  background-size: 400% 400%;
+  animation: mesh-gradient 15s ease infinite;
+}
+
+/* --- Animated Login Styles --- */
+
+.neon-login-root {
+  min-height: 100vh;
+  background: #0f0f0f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.neon-box {
+  position: relative;
+  width: 360px;
+  height: 480px;
+  background: #1c1c1c;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.neon-box::before,
+.neon-box::after {
+  content: '';
+  position: absolute;
+  width: 360px;
+  height: 480px;
+  background: linear-gradient(45deg, #00f0ff, #ff00ea);
+  animation: rotate-neon 6s linear infinite;
+}
+
+.neon-box::after {
+  animation-delay: -3s;
+}
+
+@keyframes rotate-neon {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.neon-form-inner {
+  position: absolute;
+  inset: 4px;
+  background: #222;
+  border-radius: 16px;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+.neon-content {
+  width: 100%;
+  text-align: center;
+}
+
+.neon-input {
+  width: 100%;
+  padding: 12px 15px;
+  margin: 10px 0;
+  background: #333;
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 14px;
+}
+
+.neon-input::placeholder {
+  color: #aaa;
+}
+
+.neon-submit {
+  width: 100%;
+  padding: 12px 15px;
+  margin: 10px 0;
+  background: linear-gradient(90deg, #00f0ff, #ff00ea);
+  cursor: pointer;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  transition: 0.3s;
+}
+
+.neon-submit:hover {
+  opacity: 0.8;
+}
+
+.neon-submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

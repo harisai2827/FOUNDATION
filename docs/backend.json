@@ -1,0 +1,121 @@
+
+{
+  "entities": {
+    "User": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "User",
+      "type": "object",
+      "description": "Represents a user of the QR Bistro application.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the User entity."
+        },
+        "email": {
+          "type": "string",
+          "description": "User's email address.",
+          "format": "email"
+        },
+        "displayName": {
+          "type": "string",
+          "description": "The display name of the user."
+        },
+        "role": {
+          "type": "string",
+          "description": "The role of the user (e.g., 'customer', 'admin', 'kitchen')."
+        }
+      },
+      "required": [
+        "id",
+        "email",
+        "displayName",
+        "role"
+      ]
+    },
+    "menuItem": {
+      "title": "Menu Item",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "price": { "type": "number" },
+        "categoryId": { "type": "string" },
+        "description": { "type": "string" },
+        "image": { "type": "string" },
+        "available": { "type": "boolean" }
+      },
+      "required": ["name", "price", "categoryId", "available"]
+    },
+    "order": {
+      "title": "Order",
+      "type": "object",
+      "properties": {
+        "tableId": { "type": "string" },
+        "customerId": { "type": "string" },
+        "totalPrice": { "type": "number" },
+        "status": { "type": "string", "enum": ["Pending", "Preparing", "Ready", "Served"] },
+        "timestamp": { "type": "object" },
+        "summary": { "type": "string" },
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "itemId": { "type": "string" },
+              "name": { "type": "string" },
+              "price": { "type": "number" },
+              "quantity": { "type": "number" }
+            }
+          }
+        }
+      }
+    }
+  },
+  "auth": {
+    "providers": [
+      "password",
+      "anonymous"
+    ]
+  },
+  "firestore": {
+    "structure": [
+      {
+        "path": "/menu/{menuItemId}",
+        "definition": {
+          "entityName": "menuItem",
+          "schema": {
+            "$ref": "#/backend/entities/menuItem"
+          },
+          "description": "Restaurant menu items."
+        }
+      },
+      {
+        "path": "/orders/{orderId}",
+        "definition": {
+          "entityName": "order",
+          "schema": {
+            "$ref": "#/backend/entities/order"
+          },
+          "description": "Customer orders."
+        }
+      },
+      {
+        "path": "/roles_admin/{userId}",
+        "definition": {
+          "entityName": "adminRole",
+          "schema": { "type": "object", "properties": { "email": { "type": "string" } } },
+          "description": "Admin user privileges."
+        }
+      },
+      {
+        "path": "/users/{userId}",
+        "definition": {
+          "entityName": "user",
+          "schema": {
+            "$ref": "#/backend/entities/User"
+          },
+          "description": "User profiles."
+        }
+      }
+    ]
+  }
+}

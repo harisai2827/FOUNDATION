@@ -1,0 +1,41 @@
+
+{
+  "placeholderImages": [
+    {
+      "id": "hero-restaurant",
+      "description": "A warm inviting restaurant interior",
+      "imageUrl": "https://picsum.photos/seed/restaurant/1200/600",
+      "imageHint": "restaurant interior"
+    },
+    {
+      "id": "burger",
+      "description": "Juicy gourmet burger",
+      "imageUrl": "https://picsum.photos/seed/burger/600/400",
+      "imageHint": "burger food"
+    },
+    {
+      "id": "pasta",
+      "description": "Creamy italian pasta",
+      "imageUrl": "https://picsum.photos/seed/pasta/600/400",
+      "imageHint": "pasta dish"
+    },
+    {
+      "id": "pizza",
+      "description": "Wood-fired pizza",
+      "imageUrl": "https://picsum.photos/seed/pizza/600/400",
+      "imageHint": "pizza"
+    },
+    {
+      "id": "salad",
+      "description": "Fresh garden salad",
+      "imageUrl": "https://picsum.photos/seed/salad/600/400",
+      "imageHint": "salad"
+    },
+    {
+      "id": "drink",
+      "description": "Refreshing mocktail",
+      "imageUrl": "https://picsum.photos/seed/drink/600/400",
+      "imageHint": "beverage drink"
+    }
+  ]
+}
